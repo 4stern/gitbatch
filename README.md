@@ -12,6 +12,11 @@ chmod +x gitrepos
 echo "export PATH=$PATH:~/bin/" >> ~/.profile
 ```
 
+Edit the file and edit the line by adding your folder with your git-repos
+```
+zielverzeichnis="/gitprojects/"
+```
+
 ## Usage
 
 Write where ever you are:
