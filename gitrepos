@@ -1,0 +1,26 @@
+#!/bin/sh
+if [ $# -gt 0 ]
+then
+
+	zielverzeichnis="/gitprojects/"
+	PWD=`pwd`
+	gitcmd=$1
+
+	cd ${zielverzeichnis}
+	for verzeichnis in *
+	do
+		if [ -d ${verzeichnis} ]
+		then
+			cd ${verzeichnis}
+			if [ -d .git ]
+			then
+				echo "\033[32m~~~~~ performing [ \033[33m\033[01mgit ${gitcmd}\033[0m\033[32m ] on [ \033[01m"${verzeichnis}"\033[0m \033[32m ] ~~~~~\033[0m"
+				git ${gitcmd}
+			fi
+			cd ..
+		fi
+	done
+	cd ${PWD}
+else
+	echo "Please type a git-command as first parameter"
+fi
