@@ -4,7 +4,7 @@ then
 
 	zielverzeichnis="/gitprojects/"
 	PWD=`pwd`
-	gitcmd=$1  
+	gitcmd=$(echo $*)
 
 	cd ${zielverzeichnis}
 	for verzeichnis in *
