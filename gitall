@@ -12,7 +12,7 @@ runGitCmd(){
 if [ $# -gt 0 ]
 then
 	PWD=`pwd`
-	gitcmd=$1  
+	gitcmd=$(echo $*)  
 
 	if [ -d .git ]
 	then
