@@ -1,0 +1,36 @@
+#!/bin/sh
+
+runGitCmd(){
+	if [ -d .git ]
+	then
+    
+		echo -e "\n\033[32mProject: \033[01m"${directory}"\033[0m \033[32m / Cmd: \033[33m\033[01mgit ${gitcmd}\033[0m\033[32m \033[0m\n"
+		git ${gitcmd}
+		echo -e "\n-------------------------------------------------------------------------------"
+	fi
+}
+
+if [ $# -gt 0 ]
+then
+	PWD=`pwd`
+	gitcmd=$(echo $*)  
+
+	if [ -d .git ]
+	then
+		directory=${PWD##*/}
+		runGitCmd	
+	else
+		for directory in *
+		do
+			if [ -d ${directory} ]
+			then
+				cd ${directory}
+				runGitCmd
+				cd ..
+			fi
+		done
+	fi	
+	cd ${PWD}
+else
+	echo "Please type a git-command as first parameter"
+fi
